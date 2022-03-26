@@ -19,10 +19,11 @@ x = 0
 
 while True:
 
-    GPSLat = "0.0"
-    GPSLong = "0.0"
+    GPSLat = 0.0
+    GPSLong = 0.0
     GPSTime = "00:00:00"
-    GPSAlt = "000"
+    GPSAlt = 000
+    GPSMode = 0
 
 # Get timestamp
     CurrTimestamp = datetime.now()
@@ -38,7 +39,7 @@ while True:
         GPSAlt = getattr(report,'alt','nan')
         GPSMode = getattr(report,'mode','nan')
 
-        #print("Timestamp: ", CurrTimestamp)
+        #print("System Time: ", CurrTimestamp)
         #print ("Lat: ", GPSLat)
         #print ("Long: ", GPSLong)
         #print ("GPS Time: ", GPSTime)
@@ -49,6 +50,17 @@ while True:
         if GPSMode == 3:
           break
     x += 1
+    if x == 48:
+        print("Giving up on GPS - We must be in the basement")
+        break
     time.sleep(0.8)
 
+with open('/home/pi/Tools/FetchGPS/FetchGPS.log', "w") as fout:
 
+        fout.write (f"System Time: {CurrTimestamp}\n")
+        fout.write (f"Lat: {GPSLat}\n")
+        fout.write (f"Long: {GPSLong}\n")
+        fout.write (f"GPS Time: {GPSTime}\n")
+        fout.write (f"Altitude: {GPSAlt}\n")
+        fout.write (f"GPSMode: {GPSMode}\n")
+   
