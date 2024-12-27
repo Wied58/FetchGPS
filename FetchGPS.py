@@ -55,7 +55,7 @@ while True:
         break
     time.sleep(0.8)
 
-with open('/home/pi/Tools/FetchGPS/FetchGPS.log', "w") as fout:
+with open('/home/pi/FetchGPS/FetchGPS.log', "w") as fout:
 
         fout.write (f"System Time: {CurrTimestamp}\n")
         fout.write (f"Lat: {GPSLat}\n")
@@ -64,3 +64,19 @@ with open('/home/pi/Tools/FetchGPS/FetchGPS.log', "w") as fout:
         fout.write (f"Altitude: {GPSAlt}\n")
         fout.write (f"GPSMode: {GPSMode}\n")
    
+
+
+
+
+if __name__ == '__main__':
+   
+   print (f"GPSTime = {GPSTime}") 
+   print (f"GPSTime.year = {GPSTime[0:4]}") 
+   print (f"GPSTime.month = {GPSTime[5:7]}") 
+   print (f"GPSTime.day = {GPSTime[8:10]}") 
+   print (f"GPSTime.min = {GPSTime[11:13]}") 
+   print (f"GPSTime.sec = {GPSTime[14:16]}") 
+   print (f"GPSLat = {GPSLat}") 
+   print (f"GPSLong = {GPSLong}")
+   print (f"GPSAlt = {GPSAlt}")
+   print (f"GPSMode = {GPSMode}")
